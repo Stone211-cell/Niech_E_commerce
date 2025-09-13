@@ -38,9 +38,9 @@ export default function Home() {
             <div className="absolute  top-0 w-[100%] h-[10px] bg-green-800 rounded"></div>
             {/* รูป */}
             <div className="overflow-hidden rounded-br-[40px] ml-2">
-                          <Image
+            <Image
 
-                src="images/BannerRoll-On.jpg"
+                src="/images/BannerRoll-On.jpg"
                 alt="Laptop"
                 className="w-full h-full object-cover"
                    width={500}
@@ -51,7 +51,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="text-6xl text-center mx-15">เรื่องราว</div>
+      <div className="text-6xl text-center my-15">เรื่องราว</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-15">
         <div>
           <div className="my-15">
@@ -107,7 +107,7 @@ export default function Home() {
 
                       <Link
               href={"#"}
-              className="  text-end mr-0 text-xl  px-2 py-2 bg-green-800 text-white rounded hover:bg-green-700   transition-all duration-300 ease-in-out 
+              className="  text-end mr-0 text-xl rounded-2xl px-2 py-2 bg-green-800 text-white  hover:bg-green-700   transition-all duration-300 ease-in-out 
            transform hover:scale-105 hover:shadow-lg "
             >
               ดูทั้งหมด
