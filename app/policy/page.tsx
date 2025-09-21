@@ -1,6 +1,6 @@
 const page = () => {
   return (
-    <div>page</div>
+    <div>นโยบาย ต่างๆ</div>
   )
 }
 export default page
