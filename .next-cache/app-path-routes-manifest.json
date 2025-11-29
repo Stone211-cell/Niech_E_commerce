@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/admin/create/page": "/admin/create",
+  "/product/cart/page": "/product/cart",
+  "/product/page": "/product",
+  "/viewpoint/page": "/viewpoint",
+  "/product/[id]/detailproduct/page": "/product/[id]/detailproduct",
+  "/policy/page": "/policy",
+  "/admin/edit/[id]/page": "/admin/edit/[id]",
+  "/page": "/",
+  "/profilecreate/page": "/profilecreate"
+}

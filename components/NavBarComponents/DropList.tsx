@@ -87,6 +87,12 @@ const DropList = () => {
           </div>
         </SignedOut>
       </div>
+
+         <Link href="/admin/edit/">แก้ไข</Link>
+         <Link href="/admin">admin</Link>
+
+         <Link href={`/admin/create/`}>เพิ่ม</Link>
+
     </nav>
   );
 };

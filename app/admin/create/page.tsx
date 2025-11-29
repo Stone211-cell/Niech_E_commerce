@@ -1,90 +1,60 @@
-'use client'
 
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import Link from 'next/link'
+import { CreateProductAction } from "@/app/action/createproductAction";
+import CategoryInput from "@/components/Form/CategoryInput";
 
-const List = () => {
-  const [posts, setPosts] = useState([])
+import FormContainer from "@/components/Form/FormContainer"
+import FormInput from "@/components/Form/FormInput"
+import ImageInput from "@/components/Form/ImageInput";
+import SubmitBtn from "@/components/Form/SubmitBtn"
+import TextAreaInput from "@/components/Form/TextAreaInput";
 
-  useEffect(() => {
-    fetchPosts()
-  }, [])
 
-  const fetchPosts = async () => {
-    try {
-      const res = await axios.get('/api/product')
-      setPosts(res.data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+import { Field, FieldGroup, FieldSet } from "@/components/ui/field";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-  const deletePost = async (id: Number) => {
-    try {
-      await axios.delete(`/api/product/${id}`)
-      fetchPosts()
-    } catch (error) {
-      console.error('Failed to delete the post', error)
-    }
-  }
 
+
+
+const createproduct = async() => {
+
+  const user = await currentUser();
+  if (user?.privateMetadata.Isadmin) redirect("/");
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-semibold mb-6">Blog Posts</h1>
-      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Title
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {posts.map((post: any) => (
-              <tr key={post.id}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm font-medium text-gray-900">
-                    {post.title}
-                  </div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                  <Link
-                    className="text-indigo-600 hover:text-indigo-900 mr-4"
-                    href={`/edit/${post.id}`}
-                  >
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => deletePost(post.id)}
-                    className="text-red-600 hover:text-red-900"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <Link
-        className="mt-4 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        href="/create"
-      >
-        Create a New Post
-      </Link>
-    </div>
-  )
+      <article className="flex items-center justify-center min-h-screen bg-gray-100">
+            <div className="flex flex-col justify-between p-2 items-center bg-white shadow-md rounded-md w-full max-w-xl">
+              <FormContainer className="w-full flex flex-col gap-2" action={CreateProductAction}>
+                <FieldSet>
+                  <FieldGroup>
+                    <Field>
+      
+                      <FormInput  name="title" title="Title" type="text" placeholder="กรอกชื่อสินค้า"/>
+                    
+                    </Field>
+                    <Field>
+                      <TextAreaInput name="description" text="กรอกรายละเอียดสินค้า" placeholder="รายละเอียดสินค้า" />
+                    </Field>
+                    <Field>
+                      <CategoryInput />
+                    </Field>
+                    <Field>
+                     
+                       <FormInput  name="price" title="ราคา" type="text" placeholder="0.00"/> 
+                    </Field>
+                    <Field>
+                       <ImageInput />
+                    </Field>
+                  </FieldGroup>
+                </FieldSet>
+                     
+             <SubmitBtn text="สมัครสมาชิก" size="lg"/>
+             </FormContainer>
+           </div>
+         </article> 
+        );
 }
+export default createproduct
 
-export default List
+
+
+

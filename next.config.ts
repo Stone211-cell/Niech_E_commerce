@@ -1,7 +1,30 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  allowedDevOrigins: [
+    'http://localhost:3000',
+    'http://10.162.91.110:3000'
+  ],
 
-const nextConfig: NextConfig = {
-  /* config options here */
+  // <-- แก้เป็น relative path
+  distDir: '.next-cache',
+
+
+   experimental:{
+    serverActions:{
+      bodySizeLimit: '5mb'
+    }
+  },images:{
+    remotePatterns:[
+      {
+        protocol:'https',
+        hostname:'zpdrpttwsgamubhemwnn.supabase.co'
+      }
+    ]
+  },
+  
+
+  
 };
 
-export default nextConfig;
+module.exports = nextConfig;

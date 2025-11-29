@@ -1,18 +1,17 @@
 export type actionFunction = (
   prevState: any,
   formdata: FormData
-) => Promise<{ message: string }>;
+) => Promise<{ msg: string }>;
 
 export type ProductCardProps = {
-  id: string;
-  name: string;
-  description: string;
-  category: string;
+  id: number;
+  title: string;
+  description: string | null;
   image: string;
+  category: string;
   price: number;
 };
 export type SwiperProps = {
   id: string;
   image: string;
-
 };

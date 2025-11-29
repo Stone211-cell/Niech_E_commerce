@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function CardReviewOne() {
   return (
-    <div className="h-[35rem] flex items-center my-6 justify-center w-full flex-col lg:flex-row gap-6">
+    <div className="h-140 flex items-center my-6 justify-center w-full flex-col lg:flex-row gap-6">
         <div>
 
       <CardStack items={CARDS} />

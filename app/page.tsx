@@ -4,10 +4,12 @@ import ReviewProduct from "@/components/ProductComponents/ReviewProduct";
 import Image from "next/image";
 import Link from "next/link";
 
+
 // pages/index.js
 export default function Home() {
   return (
     <>
+    
       <div className="bg-gray-100 min-h-screen flex items-center justify-center">
         <div className="max-w-6xl w-full grid md:grid-cols-2 items-center gap-8 p-8">
           {/* ฝั่งซ้าย */}
@@ -34,8 +36,8 @@ export default function Home() {
           {/* ฝั่งขวา */}
           <div className="relative">
             {/* เส้นขอบสีเขียว */}
-            <div className="absolute left-0 top-0 h-[90%] w-[10px] bg-green-800 rounded-xl"></div>
-            <div className="absolute  top-0 w-[100%] h-[10px] bg-green-800 rounded"></div>
+            <div className="absolute left-0 top-0 h-[90%] w-2.5 bg-green-800 rounded-xl"></div>
+            <div className="absolute  top-0 w-full h-2.5 bg-green-800 rounded"></div>
             {/* รูป */}
             <div className="overflow-hidden rounded-br-[40px] ml-2">
             <Image
@@ -93,14 +95,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-[20rem]">samkamkmsamk</div>
+        <div className="h-80">samkamkmsamk</div>
       </div>
 
       {/* product review*/}
 
       <section className="mx-10">
         <div className="flex flex-row justify-between w-full">
-          <h2 className="text-3xl ">
+          <h2 className="text-3xl mb-4">
             สินค้าของเรา{" "}
 
           </h2>
@@ -112,6 +114,8 @@ export default function Home() {
             >
               ดูทั้งหมด
             </Link>
+
+            
         </div>
 
         <ReviewProduct />
