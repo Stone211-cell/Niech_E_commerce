@@ -1,15 +1,12 @@
-import 'eslint-config-next/core-web-vitals';
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  ...next,
-
   {
+    extends: ["next/core-web-vitals"], // <-- แก้ตรงนี้
     rules: {
       "next/core-web-vitals": "warn",
     },
   },
-
   globalIgnores([
     ".next/**",
     "out/**",
