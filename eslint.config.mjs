@@ -2,7 +2,7 @@ import next from "eslint-config-next";
 import { defineConfig, globalIgnores } from "eslint/config";
 
 export default defineConfig([
-  ...next(),
+  ...next,
 
   {
     rules: {
