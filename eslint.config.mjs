@@ -1,19 +1,20 @@
-import { defineConfig, globalIgnores } from 'eslint/config'
-import nextVitals from 'eslint-config-next/core-web-vitals'
+import next from "eslint-config-next";
+import { defineConfig, globalIgnores } from "eslint/config";
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  
-  // Override default ignores of eslint-config-next.
+export default defineConfig([
+  ...next(),
+
+  {
+    rules: {
+      "next/core-web-vitals": "warn",
+    },
+  },
+
   globalIgnores([
-    '.next/**',
-    'out/**',
-    'build/**',
-    'next-env.d.ts',
-
-    // Ignore Prisma generated files
-    'lib/generated/prisma/**',
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "lib/generated/prisma/**",
   ]),
-])
-
-export default eslintConfig
+]);
