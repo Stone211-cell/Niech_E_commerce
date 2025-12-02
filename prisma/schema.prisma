@@ -9,11 +9,11 @@ generator client {
 }
 
 
-  // directUrl = env("DIRECT_URL")
+  
 datasource db {
-  // url       = env("DATABASE_URL")
   provider  = "postgresql"
-
+  url      = env("DATABASE_URL")   // <-- ต้องใส่ตรงนี้
+  // directUrl = env("DIRECT_URL")  // <-- optional, ใช้สำหรับ migration
 }
 
 model Product {
