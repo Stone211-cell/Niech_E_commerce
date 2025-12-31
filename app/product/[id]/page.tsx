@@ -1,6 +1,6 @@
 
-import { fetchProductDetail } from "@/app/webtwo/action/productaction";
 // import FavoriteToggleButton from "@/components/Card/FavoriteToggleButton";
+import { fetchProductDetail } from "@/app/action/authAdmin";
 import Breadcrums from "@/components/ProductComponents/Breadcrums";
 import ImageContainer from "@/components/ProductComponents/ImageContainer";
 import { redirect } from "next/navigation";

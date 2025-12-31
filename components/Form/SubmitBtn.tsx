@@ -39,14 +39,15 @@ export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
   const { pending } = useFormStatus()
   return <Button 
   type="submit"
-  size='icon'
+  size='lg'
   variant='outline'
+  className="bg-white"
   >
     {
       pending 
       ? <RotateCw className="animate-spin"/>
       : isFavorite
-      ? <Heart fill="black"/>
+      ? <Heart fill="red"/>
       : <Heart />
     }
     </Button>;

@@ -8,7 +8,7 @@ export const List: MenuItem[] = [
   { href: `/viewpoint`, label: "มุมมองของเรา" },
   { href: `/webone/`, label: "สินค้าเว็บ1" },
   { href: `/webtwo/`, label: "สินค้าเว็บ2" },
-  { href: `/product`, label: "ตระกร้าสินค้า" },
+  { href: `/cart`, label: "ตระกร้าสินค้า" },
   { href: "/policy", label: "นโยบายของเรา" },
   
   // { href: "/admin/createproduct", label: "เพิ่มสินค้า" },

@@ -1,46 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-<<<<<<< HEAD
 
 import { ProductCardProps } from "@/utils/types";
 import { fetchPreviewProductB } from "@/app/webtwo/action/productaction";
 
 
 const ReviewProduct = async () => {
-  const products = await fetchPreviewProductB();
+  const products: ProductCardProps[] = await fetchPreviewProductB();
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {products.map((product:ProductCardProps) => (
-        <Link
-          key={product.id}
-          href={`/product/${product.id.toString()}`}
-          className="group block border rounded-md overflow-hidden"
-        >
-          {/* ภาพ */}
-          <div className="relative w-full h-[300px] overflow-hidden">
-            <Image
-              src={product.image}
-              alt={product.title}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-=======
-import { fetchPreviewProduct } from "@/app/product/action/productaction";
-import { ProductCardProps } from "@/utils/types";
-
-
-const ReviewProduct = async () => {
-  const products: ProductCardProps[] = await fetchPreviewProduct();
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {products.map((product: ProductCardProps) => {
+      {products.map((product) => {
         const imgSrc = product.image || "/placeholder.png";
         const title = product.title || "No title";
-        const description = product.description || "No description available";
->>>>>>> 12697e9ef6c88069bc3a6685cd881d6c342ceac1
+        const description =
+          product.description || "No description available";
 
         return (
           <Link
@@ -48,6 +22,7 @@ const ReviewProduct = async () => {
             href={`/product/${product.id}`}
             className="group block border rounded-md overflow-hidden"
           >
+            {/* Image */}
             <div className="relative w-full h-[300px] overflow-hidden">
               <Image
                 src={imgSrc}
@@ -58,6 +33,7 @@ const ReviewProduct = async () => {
               />
             </div>
 
+            {/* Content */}
             <div className="p-2">
               <h3 className="text-sm font-semibold mt-1">
                 {title.length > 30 ? title.slice(0, 30) + "..." : title}

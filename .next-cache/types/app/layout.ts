@@ -1,4 +1,4 @@
-// File: D:\Suvapat\work-money\web-work\web-Niech-E-commerce\my-app\app\layout.tsx
+// File: C:\โปรเจคชัวคร่าว\website_work\Niech_E_commerce\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

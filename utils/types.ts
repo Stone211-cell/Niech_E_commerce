@@ -10,6 +10,7 @@ export type ProductCardProps = {
   image: string;
   category: string;
   price: number;
+  productType?: "A" | "B"
 };
 export type SwiperProps = {
   id: string;

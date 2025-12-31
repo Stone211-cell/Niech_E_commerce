@@ -1,4 +1,4 @@
-// import { getAuthUserAdmin } from "@/app/action/authAdmin";
+
 import db from "@/utils/db";
 import { redirect } from "next/navigation";
 
@@ -26,6 +26,7 @@ export const fetchAllProductB = async() =>{
   });
   return product;
 };
+
 
 
 export const fetchProductDetail = async ({
@@ -59,23 +60,3 @@ export const fetchProductDetail = async ({
 };
 
 
-
-
-
-// export const fetchFavoriteId = async ({
-//   landmarkId,
-// }: {
-//   landmarkId: string;
-// }) => {
-//   const user = await getAuthUser();
-//   const favorite = await db.favorite.findFirst({
-//     where: {
-//       landmarkId: landmarkId,
-//       profileId: user.id,
-//     },
-//     select: {
-//       id: true,
-//     },
-//   });
-//   return favorite?.id || null;
-// };

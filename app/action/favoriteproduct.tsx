@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { getAuthUser } from "./createprofileAction";
 import db from "@/utils/db";
 import { renderError } from "@/utils/rendererror";
+import { ProductCardProps } from "@/utils/types";
 
 export const fetchFavoriteId = async ({
   productId,
@@ -17,11 +18,11 @@ export const fetchFavoriteId = async ({
   const favorite = await db.favorite.findFirst({
     where: {
       productId,
+      productType, // ✅ สำคัญมาก
       profileId: user.id,
     },
-    select: {
-      id: true,
-    },
+    select: { id: true },
+
   });
 
   return favorite?.id ?? null;
@@ -66,28 +67,29 @@ export const toggleFavoriteAction = async (prevState: {
   }
 };
 
-export const fetchCart = async () => {
-  const user = await getAuthUser();
+
+export const fetchCart = async (): Promise<ProductCardProps[]> => {
+  const user = await getAuthUser()
 
   const favorites = await db.favorite.findMany({
     where: { profileId: user.id },
-  });
+  })
 
   const productAIds = favorites
-    .filter((f) => f.productType === "A")
-    .map((f) => f.productId);
+    .filter(f => f.productType === "A")
+    .map(f => f.productId)
 
   const productBIds = favorites
-    .filter((f) => f.productType === "B")
-    .map((f) => f.productId);
+    .filter(f => f.productType === "B")
+    .map(f => f.productId)
 
-  const productsA = await db.productA.findMany({
-    where: { id: { in: productAIds } },
-  });
+  const [productsA, productsB] = await Promise.all([
+    db.productA.findMany({ where: { id: { in: productAIds } } }),
+    db.productB.findMany({ where: { id: { in: productBIds } } }),
+  ])
 
-  const productsB = await db.productB.findMany({
-    where: { id: { in: productBIds } },
-  });
-
-  return [...productsA, ...productsB];
-};
+  return [
+    ...productsA.map(p => ({ ...p, productType: "A" as const })),
+    ...productsB.map(p => ({ ...p, productType: "B" as const })),
+  ]
+}

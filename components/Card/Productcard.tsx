@@ -1,14 +1,18 @@
+
+
 import { ProductCardProps } from "@/utils/types";
 import Image from "next/image";
 
 import Link from "next/link";
 import FavoriteToggleButton from "./FavoriteToggleButton";
 
+
+
 const ProductCard = ({ product }: { product: ProductCardProps }) => {
   const { title, image, id,description,price,
       } = product;
   return (
-    <article className="group relative">
+    <article className="group relative mt-20">
       <Link href={`/product/${id}`}>
       
       <div className="relative h-[300px] rounded-md mb-2">
@@ -33,14 +37,18 @@ const ProductCard = ({ product }: { product: ProductCardProps }) => {
 
       <div className="mt-1 flex items-center justify-between 
       font-semibold text-sm">
-          <span>THB {price}</span>
+          <span>THB sdsda{price}</span>
        
       </div>
+      
       </Link>
 
       <div className="absolute top-5 right-5">
-        <FavoriteToggleButton productId={id}/>
+       
+           <FavoriteToggleButton productId={id}/>
       </div>
+
+
     </article>
   );
 };
