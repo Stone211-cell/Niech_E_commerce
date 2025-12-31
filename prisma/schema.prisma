@@ -8,10 +8,19 @@ generator client {
   provider = "prisma-client-js"
 }
 
+<<<<<<< HEAD
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+=======
+
+  
+datasource db {
+  provider  = "postgresql"
+  url      = env("DATABASE_URL")   // <-- ต้องใส่ตรงนี้
+  // directUrl = env("DIRECT_URL")  // <-- optional, ใช้สำหรับ migration
+>>>>>>> 12697e9ef6c88069bc3a6685cd881d6c342ceac1
 }
 
 model ProductA {
