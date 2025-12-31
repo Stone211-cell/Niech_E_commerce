@@ -23,7 +23,7 @@ const nextConfig = {
     ]
   },
   eslint: {
-    ignoreBuildErrors: true,
+   
   }
 
   

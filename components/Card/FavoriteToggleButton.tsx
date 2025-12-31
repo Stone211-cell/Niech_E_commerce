@@ -2,7 +2,9 @@ import { auth } from "@clerk/nextjs/server";
 import FavoriteToggleForm from "./FavoriteToggleForm";
 import { fetchFavoriteId } from "@/app/action/favoriteproduct";
 import { SignInCardButton } from "../Form/SubmitBtn";
-import { fetchProductDetail } from "@/app/webtwo/action/productaction";
+import { fetchProductDetail } from "@/app/action/authAdmin";
+
+
 
 const FavoriteToggleButton = async ({
   productId,
@@ -13,7 +15,7 @@ const FavoriteToggleButton = async ({
   if (!userId) return <SignInCardButton />;
 
   // ✅ await + ส่ง argument ถูก
-  const productDetail = await fetchProductDetail({ id: productId });
+  const productDetail = await fetchProductDetail();
 
   if (!productDetail) return null;
 
@@ -26,6 +28,7 @@ const FavoriteToggleButton = async ({
   });
 
   return (
+
     <FavoriteToggleForm
       productType={type}
       favoriteId={favoriteId}
