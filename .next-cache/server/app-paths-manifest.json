@@ -1,13 +1,3 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/product/[id]/detailproduct/page": "app/product/[id]/detailproduct/page.js",
-  "/policy/page": "app/policy/page.js",
-  "/admin/create/page": "app/admin/create/page.js",
-  "/admin/edit/[id]/page": "app/admin/edit/[id]/page.js",
-  "/product/cart/page": "app/product/cart/page.js",
-  "/product/page": "app/product/page.js",
-  "/profilecreate/page": "app/profilecreate/page.js",
-  "/page": "app/page.js",
-  "/viewpoint/page": "app/viewpoint/page.js"
+  "/page": "app/page.js"
 }

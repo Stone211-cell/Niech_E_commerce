@@ -4,7 +4,7 @@ export type actionFunction = (
 ) => Promise<{ msg: string }>;
 
 export type ProductCardProps = {
-  id: number;
+  id: string;
   title: string;
   description: string | null;
   image: string;

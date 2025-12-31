@@ -1,4 +1,4 @@
-// File: D:\Suvapat\work-money\web-work\web-ธุรกิจNiech-E-commerce\my-app\app\page.tsx
+// File: D:\Suvapat\work-money\web-work\web-Niech-E-commerce\my-app\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

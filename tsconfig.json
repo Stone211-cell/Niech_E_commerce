@@ -35,7 +35,8 @@
     "D:/next-cache/types/**/*.ts",
     "app/admin/create",
     "next-env.d.ts",
-    ".next-cache/types/**/*.ts"
+    ".next-cache/types/**/*.ts",
+    ".next-cache/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -14,6 +14,7 @@ const ImageInput = () => {
          type="file"
          required
          accept="image/*"
+          // defaultValue={defaultValue}
         />
     </div>
   )

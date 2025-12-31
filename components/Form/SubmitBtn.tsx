@@ -3,6 +3,8 @@ import { useFormStatus } from "react-dom";
 import { Button } from "../ui/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
+import { Heart, RotateCw } from "lucide-react";
+import { SignInButton } from "@clerk/nextjs";
 
 type btnSize = "default" | "lg" | "sm";
 
@@ -29,3 +31,35 @@ const SubmitBtn = ({ className, size = "default", text }: SubmitBtnprops) => {
   );
 };
 export default SubmitBtn;
+
+
+
+export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
+  // console.log('is',isFavorite)
+  const { pending } = useFormStatus()
+  return <Button 
+  type="submit"
+  size='icon'
+  variant='outline'
+  >
+    {
+      pending 
+      ? <RotateCw className="animate-spin"/>
+      : isFavorite
+      ? <Heart fill="black"/>
+      : <Heart />
+    }
+    </Button>;
+};
+
+
+export const SignInCardButton = () => {
+  return (
+    <SignInButton mode="modal">
+      <Button size="icon" variant="outline">
+        <Heart />
+      </Button>
+    </SignInButton>
+  );
+};
+

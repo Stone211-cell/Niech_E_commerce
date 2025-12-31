@@ -30,12 +30,12 @@ export const ProfileCreate = async (_prevState: IDK, formData: FormData) => {
     await client.users.updateUserMetadata(user.id, {
       privateMetadata: { hasProfile: true },
     });
-     
+    redirect ("/");
+
   } catch (error) {
     console.log(error);
     return renderError(error);
   }
- redirect("/")
 };
 
 
@@ -43,11 +43,11 @@ export const ProfileCreate = async (_prevState: IDK, formData: FormData) => {
 
 
 // เช็คคนเข้ามาว่าlogin หรือยัง
-// const getAuthUser = async () => {
-//   const user = await currentUser();
-//   if (!user) {
-//     throw new Error("You must logged!!");
-//   }
+export const getAuthUser = async () => {
+  const user = await currentUser();
+  if (!user) {
+    throw new Error("You must logged!!");
+  }
 
-//   return user;
-// };
+  return user;
+};

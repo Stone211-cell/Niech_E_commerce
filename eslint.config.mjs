@@ -1,5 +1,5 @@
 import { defineConfig, globalIgnores } from 'eslint/config'
-import nextVitals from 'eslint-config-next/core-web-vitals'
+
 
 const eslintConfig = defineConfig([
   ...nextVitals,
@@ -10,9 +10,6 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
-
-    // Ignore Prisma generated files
-    'lib/generated/prisma/**',
   ]),
 ])
 

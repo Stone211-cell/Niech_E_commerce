@@ -1,13 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { fetchPreviewProduct } from "@/app/product/action/productaction";
+
+import { ProductCardProps } from "@/utils/types";
+import { fetchPreviewProductB } from "@/app/webtwo/action/productaction";
+
 
 const ReviewProduct = async () => {
-  const products = await fetchPreviewProduct();
+  const products = await fetchPreviewProductB();
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {products.map((product) => (
+      {products.map((product:ProductCardProps) => (
         <Link
           key={product.id}
           href={`/product/${product.id.toString()}`}

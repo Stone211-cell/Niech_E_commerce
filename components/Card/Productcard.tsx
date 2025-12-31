@@ -2,6 +2,7 @@ import { ProductCardProps } from "@/utils/types";
 import Image from "next/image";
 
 import Link from "next/link";
+import FavoriteToggleButton from "./FavoriteToggleButton";
 
 const ProductCard = ({ product }: { product: ProductCardProps }) => {
   const { title, image, id,description,price,
@@ -37,9 +38,9 @@ const ProductCard = ({ product }: { product: ProductCardProps }) => {
       </div>
       </Link>
 
-      {/* <div className="absolute top-5 right-5">
-        <FavoriteToggleButton landmarkId={id}/>
-      </div> */}
+      <div className="absolute top-5 right-5">
+        <FavoriteToggleButton productId={id}/>
+      </div>
     </article>
   );
 };

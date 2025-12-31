@@ -10,7 +10,7 @@ const initialState = {
 
 
 const FormContainer = ({action,children,className}:{action:actionFunction,children:React.ReactNode,className?:string}) => {
-  
+    
     const [state,formAction] = useActionState(action,initialState)
 
     useEffect(()=> {

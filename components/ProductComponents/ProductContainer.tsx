@@ -1,19 +1,21 @@
-import { fetchProduct } from "@/app/product/action/productaction";
+
 import ProductList from "./ProductList";
+import { ProductCardProps } from "@/utils/types";
 
 
 
 const ProductContainer = async ({
+  props
 //   search,
 //   category
 // }: {
 //   search?: string;
 //   category?: string;
-}) => {
+}:any) => {
 //   const product: ProductCardProps[] = await fetchProduct({ search,category });
-  const product = await fetchProduct();
+  // const product = await fetchProduct();
 
-
+  
 
   return (
     <div>
@@ -26,7 +28,7 @@ const ProductContainer = async ({
       }
       */}
 
-      <ProductList products={product} />
+      <ProductList products={props} />
       </div> 
   );
 };

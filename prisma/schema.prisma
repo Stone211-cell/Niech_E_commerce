@@ -1,4 +1,4 @@
-// This is your Prisma schema file,
+ // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
@@ -8,42 +8,73 @@ generator client {
   provider = "prisma-client-js"
 }
 
-
-  // url       = env("DATABASE_URL")
-  // directUrl = env("DIRECT_URL")
 datasource db {
   provider  = "postgresql"
-
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
-model Product {
-  id          Int      @id @default(autoincrement())
+model ProductA {
+  id          String     @id @default(uuid())
   title       String
   description String?
   price       Int
   image       String
   category    String
-  profile     Profile  @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+  profile     Profile    @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
   profileId   String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+ 
+}
+
+model ProductB {
+  id          String     @id @default(uuid())
+  title       String
+  description String?
+  price       Int
+  image       String
+  category    String
+  profile     Profile    @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+  profileId   String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  
 }
 
 model Profile {
-  id           String    @id @default(uuid())
-  clerkId      String    @unique
+  id           String     @id @default(uuid())
+  clerkId      String     @unique
   name         String
   email        String
   phone        String
   emailcontect String
   profileImage String
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  // landmarks    Landmark[]
-  // favorites    Favorite[]
-  products     Product[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  favorites    Favorite[]
+  productsA    ProductA[]
+  productsB    ProductB[]
 }
 
+model Favorite {
+  id          String      @id @default(uuid())
+  profile     Profile    @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
+  profileId   String
+
+  productType ProductType
+  productId   String
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@unique([profileId, productType, productId])
+}
+
+enum ProductType {
+  A
+  B
+}
 // model Product {
 //   id          String     @id @default(uuid())
 //   productName        String
@@ -57,14 +88,3 @@ model Profile {
 // profileId   String
 // favorites   Favorite[]
 // }
-
-// model Favorite {
-//   id        String   @id @default(uuid())
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-
-//   profile   Profile @relation(fields: [profileId], references: [clerkId], onDelete: Cascade)
-//   profileId String
-
-// landmark   Landmark @relation(fields: [landmarkId], references: [id], onDelete: Cascade)
-// landmarkId String }

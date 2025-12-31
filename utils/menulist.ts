@@ -6,7 +6,8 @@ type MenuItem = {
 export const List: MenuItem[] = [
   { href: "/", label: "หน้าหลัก" },
   { href: `/viewpoint`, label: "มุมมองของเรา" },
-  { href: `/product`, label: "สินค้าของคุณ" },
+  { href: `/webone/`, label: "สินค้าเว็บ1" },
+  { href: `/webtwo/`, label: "สินค้าเว็บ2" },
   { href: `/product`, label: "ตระกร้าสินค้า" },
   { href: "/policy", label: "นโยบายของเรา" },
   
