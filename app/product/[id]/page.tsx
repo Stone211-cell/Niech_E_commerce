@@ -2,18 +2,19 @@
 import { fetchProductDetail } from "@/app/action/authAdmin";
 import Breadcrums from "@/components/ProductComponents/Breadcrums";
 import ImageContainer from "@/components/ProductComponents/ImageContainer";
+import { ParamsPromise } from "@/utils/types";
 import { redirect } from "next/navigation";
 
 const ProductDetail = async (
-  props: any
+  { params }:ParamsPromise 
  // inline type แทน interface
 ) => {
-   const { id } = props.params; // ❌ ไม่ต้อง await
+   const { id } = await  params; // ❌ ไม่ต้อง await
   const data = await fetchProductDetail({ id });
 
   if (!data?.product) redirect("/");
 
-  const { product } = data;
+  const { product } = data
 
   return (
     <section>

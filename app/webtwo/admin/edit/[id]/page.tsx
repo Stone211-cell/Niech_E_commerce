@@ -7,12 +7,13 @@ import ImageInput from "@/components/Form/ImageInput";
 import SubmitBtn from "@/components/Form/SubmitBtn";
 import TextAreaInput from "@/components/Form/TextAreaInput";
 import { Field, FieldGroup, FieldSet } from "@/components/ui/field";
+import { ParamsPromise } from "@/utils/types";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 
 //b1805b68-28f7-43ff-a234-1892f8b748bd
-const Page = async ({ params }: { params: { id: string } }) => {
+const Page = async ({ params }: ParamsPromise) => {
   const { id } = await params;
 
   // ดึงข้อมูล product

@@ -4,7 +4,7 @@ import FormContainer from "../Form/FormContainer";
 import { usePathname } from "next/navigation";
 import  { CardSubmitButton } from "../Form/SubmitBtn";
 import { toggleFavoriteAction } from "@/app/action/favoriteproduct";
-import { fetchProductDetail } from "@/app/webtwo/action/productaction";
+
 
 
 const FavoriteToggleForm = ({

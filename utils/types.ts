@@ -16,3 +16,8 @@ export type SwiperProps = {
   id: string;
   image: string;
 };
+
+
+export type ParamsPromise = {
+  params: Promise<{ id: string }>;
+};

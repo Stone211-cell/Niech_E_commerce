@@ -41,6 +41,20 @@ const DropList = () => {
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
+
+                         <DropdownMenuSeparator />
+
+              <DropdownMenuItem>
+              <Link href="/admin/edit/" className="mx-4">แก้ไข</Link>
+         <Link href="/admin">admin</Link>
+
+         <Link href={`/admin/create/`}>เพิ่ม</Link>
+              </DropdownMenuItem>
+  
+            <DropdownMenuSeparator /> 
+
+
+
             <SignedIn>
               <SignOutBtn msg="SignOut" />
             </SignedIn>
@@ -65,15 +79,26 @@ const DropList = () => {
             {item.label}
           </Link>
         ))}
-
+        
         <DropdownMenu>
           <DropdownMenuTrigger className="px-3 py-2 rounded-md text-white bg-red-500 hover:bg-red-700 hover:scale-105 transition-all duration-150">
             ปุ่มย่อย
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuContent className="bg-white">
+            <DropdownMenuLabel >My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {/* ใส่ PayList หรือเมนูย่อยได้ */}
+
+          <div className="flex flex-1 flex-col">
+
+         <Link href="/admin/edit/" >แก้ไข</Link>
+
+         <Link href="/admin">admin</Link>
+
+         <Link href={`/admin/create/`}>เพิ่ม</Link>
+          </div>
+
+
           </DropdownMenuContent>
         </DropdownMenu>
 
@@ -86,12 +111,16 @@ const DropList = () => {
             <SignUpBtn msg="SignUp" />
           </div>
         </SignedOut>
+
+
+        <DropdownMenuSeparator />
+
+    
+  
+        
       </div>
 
-         <Link href="/admin/edit/">แก้ไข</Link>
-         <Link href="/admin">admin</Link>
 
-         <Link href={`/admin/create/`}>เพิ่ม</Link>
 
     </nav>
   );

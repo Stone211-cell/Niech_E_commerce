@@ -75,21 +75,3 @@ export const EditProductActionB = async (
   }
 };
 
-// export const fetchProductId = async ({{id}:{id:string}}: {
-//   search?: string;
-//   category?: string;
-// }) => {
-//   const Products = await db.productB.findMany({
-//     where: {
-//       category,
-//       OR: [
-//         { name: { contains: search, mode: "insensitive" } },
-//         { description: { contains: search, mode: "insensitive" } },
-//       ],
-//     },
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//   });
-//   return landmarks;
-// };

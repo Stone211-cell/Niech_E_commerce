@@ -50,3 +50,12 @@ next-env.d.ts
 out/
 build/
 
+
+node_modules
+.next
+.next-cache
+.env
+.env.local
+.env.production
+.env.development
+prisma/dev.db
