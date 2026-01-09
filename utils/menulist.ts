@@ -18,6 +18,7 @@ export const List: MenuItem[] = [
 
 export const AdminList: MenuItem[] = [
 
-  { href: "/admin/createproduct", label: "เพิ่มสินค้า" },
+  {  href: `/webtwo/admin/create`, label: "เพิ่มสินค้า" },
+  {  href: `/webtwo/admin`, label: "หน้าแอดมิน" },
 
 ];

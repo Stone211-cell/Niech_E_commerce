@@ -1,18 +1,18 @@
 import FormContainer from "@/components/Form/FormContainer";
 import FormInput from "@/components/Form/FormInput";
 import SubmitBtn from "@/components/Form/SubmitBtn";
-import { ProfileCreate } from "../action/createprofileAction";
+import { profileCreate } from "../action/createprofileAction";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 const ProfileCreatePage = async () => {
   const user = await currentUser();
-  if (user?.privateMetadata.hasProfile) redirect("/");
+  if (user?.privateMetadata.hasProfile) redirect("/sign-in");;
 
   return (
       <article className="flex items-center justify-center min-h-screen bg-gray-100">
     <div className=" p-5 items-center bg-white shadow-md rounded-md w-full max-w-xl">
-      <FormContainer action={ProfileCreate}>
+      <FormContainer action={profileCreate}>
         <h1 className="text-2xl font-bold text-center">สมัครสมาชิก</h1>
 
         {/* Name */}

@@ -9,7 +9,7 @@ export type IDK =  {
   msg:string
 }
 
-export const ProfileCreate = async (_prevState: IDK, formData: FormData) => {
+export const profileCreate = async (_prevState: IDK, formData: FormData) => {
   try {
     const user = await currentUser();
     // เช็คคนเข้ามาว่ามี โปรไฟล์หรือยัง

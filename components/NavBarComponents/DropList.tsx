@@ -24,7 +24,7 @@ const DropList = () => {
       {/* Mobile */}
       <div className="flex md:hidden items-center">
         <DropdownMenu open={open} onOpenChange={setOpen}>
-          <DropdownMenuTrigger>
+          <DropdownMenuTrigger >
             <FontAwesomeIcon
               icon={open ? faXmark : faBars}
               size="2x"
@@ -32,7 +32,7 @@ const DropList = () => {
             />
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent>
+          <DropdownMenuContent className="bg-white">
             <DropdownMenuLabel>เมนู</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {List.map((item, index) => (
@@ -42,13 +42,12 @@ const DropList = () => {
             ))}
             <DropdownMenuSeparator />
 
+
+
                          <DropdownMenuSeparator />
 
               <DropdownMenuItem>
-              <Link href="/admin/edit/" className="mx-4">แก้ไข</Link>
-         <Link href="/admin">admin</Link>
-
-         <Link href={`/admin/create/`}>เพิ่ม</Link>
+         <Link href={`/webtwo/admin/create`}>เพิ่มสินค้า่</Link>
               </DropdownMenuItem>
   
             <DropdownMenuSeparator /> 
@@ -91,11 +90,10 @@ const DropList = () => {
 
           <div className="flex flex-1 flex-col">
 
-         <Link href="/admin/edit/" >แก้ไข</Link>
-
-         <Link href="/admin">admin</Link>
-
-         <Link href={`/admin/create/`}>เพิ่ม</Link>
+           
+  
+   
+  
           </div>
 
 
