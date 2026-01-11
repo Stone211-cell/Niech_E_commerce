@@ -32,9 +32,9 @@ export const toggleFavoriteAction = async (prevState: {
   favoriteId: string | null;
   productId: string;
   pathname: string;
-  productType:  "A" | "B";
+  productType: "A" | "B";
 }) => {
-  const { favoriteId, productId, pathname,productType } = prevState;
+  const { favoriteId, productId, pathname, productType } = prevState;
   const user = await getAuthUser();
 
   try {

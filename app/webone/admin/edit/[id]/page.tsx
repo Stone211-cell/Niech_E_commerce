@@ -1,6 +1,5 @@
 import { EditProductActionB } from "@/app/webtwo/action/createproductAction";
 import { fetchProductDetail } from "@/app/webtwo/action/productaction";
-
 import CategoryInput from "@/components/Form/CategoryInput";
 import FormContainer from "@/components/Form/FormContainer";
 import FormInput from "@/components/Form/FormInput";
@@ -62,3 +61,4 @@ const Page = async ({ params }: ParamsPromise) => {
   );
 };
 
+export default Page;

@@ -2,6 +2,8 @@
 import { currentUser } from "@clerk/nextjs/server";
 import DropList from "./DropList";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import { AdminList } from "@/utils/menulist";
 
 const Headbar = async () => {
   const user = await currentUser();
@@ -14,9 +16,13 @@ const Headbar = async () => {
         <div className="flex gap-4">
           LOGO
 
-          {isAdmin && <div>Admin Zone
-            <p>หน้าแอดมินสำหรับเว็บที่1</p>
-            <Link href={`/webtwo/admin/create`}>หน้าแอดมินสำหรับเว็บที่2 (เพิ่มสินค้า่)</Link>
+          {isAdmin && <div>
+              {AdminList.map((item, index) => (
+              <Button key={index} asChild variant="default">
+                <Link href={item.href}>{item.label}</Link>
+              </Button>
+            ))}
+ 
           </div>}
         </div>
 

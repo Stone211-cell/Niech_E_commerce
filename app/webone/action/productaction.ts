@@ -1,30 +1,8 @@
-// import { getAuthUserAdmin } from "@/app/action/authAdmin";
+
 import db from "@/utils/db";
 import { redirect } from "next/navigation";
 
- 
-
-export const fetchProductDetailA = async({id}:{id:string})=>{
-try {
-  
-
-  // code body
-  const idproduct = id 
-  return db.productA.findFirst({
-    where:{
-      id : idproduct
-    },
-    include:{
-      profile:true
-      
-    }
-  })
-  } catch (error) {
-  redirect("/")
-}
-}
-
-export const fetchProduct = async() =>{
+export const fetchPreviewProductA = async() =>{
 
  const product = await db.productA.findMany({
     orderBy: {
@@ -35,20 +13,19 @@ export const fetchProduct = async() =>{
   return product;
 };
 
-// export const fetchFavoriteId = async ({
-//   landmarkId,
-// }: {
-//   landmarkId: string;
-// }) => {
-//   const user = await getAuthUser();
-//   const favorite = await db.favorite.findFirst({
-//     where: {
-//       landmarkId: landmarkId,
-//       profileId: user.id,
-//     },
-//     select: {
-//       id: true,
-//     },
-//   });
-//   return favorite?.id || null;
-// };
+
+
+
+export const fetchAllProductA = async() =>{
+
+ const product = await db.productA.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+
+  });
+  return product;
+};
+
+
+

@@ -15,7 +15,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -36,7 +36,8 @@
     "app/admin/create",
     "next-env.d.ts",
     ".next-cache/types/**/*.ts",
-    ".next-cache/dev/types/**/*.ts"
+    ".next-cache/dev/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

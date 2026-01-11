@@ -13,14 +13,15 @@ type SubmitBtnprops = {
   size?: btnSize;
   text: string;
 };
-const SubmitBtn = ({ className, size = "default", text }: SubmitBtnprops) => {
+const SubmitBtn = ({ className = " bg-[#0d674ff4] text-white", size = "default", text }: SubmitBtnprops) => {
   const { pending } = useFormStatus();
   return (
     <Button
       disabled={pending}
       type="submit"
       size={size}
-      className={`${className} bg-[#0d674ff4] text-white`}
+      className={`${className} `}
+      variant="default"
     >
       {pending ? (
         <FontAwesomeIcon icon={faRotateRight} className="animate-spin" />
@@ -63,4 +64,10 @@ export const SignInCardButton = () => {
     </SignInButton>
   );
 };
+
+
+
+
+
+
 

@@ -7,6 +7,7 @@ import db from "@/utils/db";
 import { getAuthUserAdmin } from "@/app/action/authAdmin";
 import { uploadFile } from "@/utils/supabase";
 import { IDK } from "@/app/action/createprofileAction";
+import { revalidatePath } from "next/cache";
 
 
 export const CreateProductActionB = async (
@@ -74,4 +75,26 @@ export const EditProductActionB = async (
     return renderError(error);
   }
 };
+
+export const DeleteProductActionB = async (_: any,formData: FormData) => {
+  try {
+    const id = formData.get("id") as string
+    console.log(id)
+
+
+    await db.productB.delete({
+      where: {id}
+    })
+    revalidatePath("/webtwo/admin");
+    return { msg: "del product succ" };
+    
+
+  } catch (error) {
+    console.log(error);
+    return renderError(error);
+  }
+  
+};
+
+
 

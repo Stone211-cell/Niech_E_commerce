@@ -1,4 +1,5 @@
 // @ts-ignore
+
 import { fetchProductDetail } from "@/app/action/authAdmin";
 import Breadcrums from "@/components/ProductComponents/Breadcrums";
 import ImageContainer from "@/components/ProductComponents/ImageContainer";

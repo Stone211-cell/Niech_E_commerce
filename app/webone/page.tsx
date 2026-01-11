@@ -1,13 +1,14 @@
 import ProductContainer from "@/components/ProductComponents/ProductContainer"
-import { fetchProduct } from "./action/productaction";
+import { fetchAllProductA } from "./action/productaction";
+
 
 
 const pagewebone = async() => {
-const product = await fetchProduct();
+const product = await fetchAllProductA();
   return (
     <div>
-        
-        <ProductContainer props={product}/>
+             <h1 className='flex justify-center text-3xl mt-5'>หน้าสำหรับ ADMIN</h1>
+        <ProductContainer props={product}  />
     </div>
   )
 }
