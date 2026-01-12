@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <ClerkProvider publishableKey={publishableKey}>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <body className="font-sans">
           <Headbar />
           {children}
           <Footter />

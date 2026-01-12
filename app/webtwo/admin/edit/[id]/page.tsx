@@ -62,3 +62,4 @@ const Page = async ({ params }: ParamsPromise) => {
   );
 };
 
+export default Page;
