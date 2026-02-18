@@ -1,11 +1,11 @@
 "use server";
 import { renderError } from "@/utils/rendererror";
-import { imageSchema, productSchema, validateWithZod } from "@/utils/Schema";
+import { productSchema, validateWithZod } from "@/utils/Schema";
 
 import db from "@/utils/db";
 
 import { getAuthUserAdmin } from "@/app/action/authAdmin";
-import { uploadFile } from "@/utils/supabase";
+import { uploadFile, uploadFiles } from "@/utils/supabase";
 import { IDK } from "@/app/action/createprofileAction";
 import { revalidatePath } from "next/cache";
 
@@ -15,27 +15,36 @@ export const CreateProductActionB = async (
   formData: FormData
 ): Promise<{ msg: string }> => {
   try {
-    // เช็คคนเข้ามาว่ามี โปรไฟล์หรือยัง
     const user = await getAuthUserAdmin();
-    console.log(user);
     const rawData = Object.fromEntries(formData);
-    const file = formData.get("image") as File;
 
-    // image
-    const validateFile = validateWithZod(imageSchema, { image: file });
-    // data product
+    // รับหลายรูป
+    const files = formData.getAll("images") as File[];
+    const validFiles = files.filter((f) => f.size > 0);
+
+    if (validFiles.length === 0) {
+      // fallback: ลองดึงจาก field "image" เดิม
+      const singleFile = formData.get("image") as File;
+      if (!singleFile || singleFile.size === 0) {
+        throw new Error("ต้องเลือกรูปอย่างน้อย 1 รูป");
+      }
+      validFiles.push(singleFile);
+    }
+
     const validateField = validateWithZod(productSchema, rawData);
 
-    const fullpath = await uploadFile(validateFile.image);
-    console.log(fullpath);
+    // อัพโหลดทุกรูป
+    const allUrls = await uploadFiles(validFiles);
+
     await db.productB.create({
       data: {
         ...validateField,
-        image: fullpath,
+        image: allUrls[0],      // รูปแรกเป็น main image
+        images: allUrls,         // ทุกรูป
         profileId: user.id,
       },
     });
-    return { msg: "dee ja" };
+    return { msg: "เพิ่มสินค้าสำเร็จ!" };
   } catch (error) {
     console.log(error);
     return renderError(error);
@@ -47,53 +56,75 @@ export const EditProductActionB = async (
   formData: FormData,
 ): Promise<{ msg: string }> => {
   try {
-    // เช็คคนเข้ามาว่ามี โปรไฟล์หรือยัง
     const user = await getAuthUserAdmin();
-
     const rawData = Object.fromEntries(formData);
-    const file = formData.get("image") as File;
-    const id = formData.get("id") as string
-  
+    const id = formData.get("id") as string;
 
-    // image
-    const validateFile = validateWithZod(imageSchema, { image: file });
-    // data product
     const validateField = validateWithZod(productSchema, rawData);
-    const fullpath = await uploadFile(validateFile.image);
+
+    // รูปเดิมที่ยังเก็บไว้
+    const existingImages = formData.getAll("existingImages") as string[];
+
+    // รับรูปใหม่
+    const files = formData.getAll("images") as File[];
+    const validFiles = files.filter((f) => f.size > 0);
+
+    let allUrls = [...existingImages];
+
+    if (validFiles.length > 0) {
+      const newUrls = await uploadFiles(validFiles);
+      allUrls = [...allUrls, ...newUrls];
+    }
+
+    if (allUrls.length === 0) {
+      // fallback single file field
+      const singleFile = formData.get("image") as File;
+      if (singleFile && singleFile.size > 0) {
+        const fullpath = await uploadFile(singleFile);
+        allUrls = [fullpath];
+      }
+    }
+
+    if (allUrls.length === 0) {
+      throw new Error("ต้องมีรูปภาพสินค้าอย่างน้อย 1 รูป");
+    }
+
+    const updateData = {
+      ...validateField,
+      image: allUrls[0],
+      images: allUrls,
+      profileId: user.id,
+    };
 
     await db.productB.update({
       where: { id },
-      data: {
-        ...validateField,
-        image: fullpath,
-        profileId: user.id,
-      },
+      data: updateData,
     });
-    return { msg: "dee ja" };
+    return { msg: "แก้ไขสินค้าสำเร็จ!" };
   } catch (error) {
     console.log(error);
     return renderError(error);
   }
 };
 
-export const DeleteProductActionB = async (_: any,formData: FormData) => {
+export const DeleteProductActionB = async (_: any, formData: FormData) => {
   try {
     const id = formData.get("id") as string
     console.log(id)
 
 
     await db.productB.delete({
-      where: {id}
+      where: { id }
     })
     revalidatePath("/webtwo/admin");
     return { msg: "del product succ" };
-    
+
 
   } catch (error) {
     console.log(error);
     return renderError(error);
   }
-  
+
 };
 
 

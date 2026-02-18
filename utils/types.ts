@@ -8,6 +8,7 @@ export type ProductCardProps = {
   title: string;
   description: string | null;
   image: string;
+  images?: string[];
   category: string;
   price: number;
   productType?: "A" | "B"

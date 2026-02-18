@@ -47,62 +47,55 @@ type Viewpointtype = {
   des: string;
   scr: string;
   cls?: string;
-  ty ?: string
+  ty?: string;
 };
-export const ViewpointCardL = ({ texthead, des, scr, cls,ty }: Viewpointtype) => {
-  return (
-   <div className="mx-auto w-3/5">
-    <div
-      className={`flex flex-col md:flex-row md:justify-center justify-start md:gap-6 p-3 md:p-6 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition duration-300 ${cls}`}
-    >
-      {/* Image */}
-      <div className="relative w-full md:w-2/4 h-100 rounded-xl overflow-hidden">
-        <Image
-          src={scr}
-          alt={texthead}
-          fill
-          className="object-cover hover:scale-105 transition duration-500"
-          />
-      </div>
 
-      {/* Text Content */}
-      <div className="flex-1 text-gray-800 text-start pt-5">
-        <h2 className="text-3xl font-semibold">{texthead}</h2>
-        <p className="text-gray-400 text-sm">{ty}</p>
-        <p className="text-gray-600 leading-relaxed text-md mt-5">{des}</p>
+export const ViewpointCardL = ({ texthead, des, scr, cls, ty }: Viewpointtype) => {
+  return (
+    <div className={`vp-card-left mx-auto w-full max-w-4xl ${cls}`}>
+      <div className="flex flex-col md:flex-row md:justify-center justify-start md:gap-8 p-6 md:p-8 rounded-2xl border border-white/10 bg-gray-900/80 backdrop-blur-sm hover:bg-gray-900 transition duration-300">
+        {/* Image */}
+        <div className="relative w-full md:w-2/4 h-72 md:h-80 rounded-xl overflow-hidden">
+          <Image
+            src={scr}
+            alt={texthead}
+            fill
+            className="object-cover hover:scale-105 transition duration-500"
+          />
+        </div>
+
+        {/* Text */}
+        <div className="flex-1 text-start pt-5">
+          <h2 className="text-2xl font-bold text-white">{texthead}</h2>
+          <p className="text-purple-400 text-sm mt-1">{ty}</p>
+          <p className="text-gray-400 leading-relaxed text-sm mt-4">{des}</p>
+        </div>
       </div>
     </div>
-    </div>
-   
   );
 };
 
-export const ViewpointCardR = ({ texthead, des, scr, cls,ty }: Viewpointtype) => {
+export const ViewpointCardR = ({ texthead, des, scr, cls, ty }: Viewpointtype) => {
   return (
-   <div className="mx-auto w-3/5">
-    
+    <div className={`vp-card-right mx-auto w-full max-w-4xl ${cls}`}>
+      <div className="flex flex-col-reverse md:flex-row md:justify-center justify-start md:gap-8 p-6 md:p-8 rounded-2xl border border-white/10 bg-gray-900/80 backdrop-blur-sm hover:bg-gray-900 transition duration-300">
+        {/* Text */}
+        <div className="flex-1 text-start pt-5">
+          <h2 className="text-2xl font-bold text-white">{texthead}</h2>
+          <p className="text-blue-400 text-sm mt-1">{ty}</p>
+          <p className="text-gray-400 leading-relaxed text-sm mt-4">{des}</p>
+        </div>
 
-    <div
-      className={`flex flex-col-reverse md:flex-row md:justify-center justify-start md:gap-6 p-3 md:p-6 rounded-2xl shadow-lg bg-white hover:shadow-2xl transition duration-300 ${cls}`}
-    >
-      {/* Text Content */}
-      <div className="flex-1 text-gray-800 text-start pt-5">
-        <h2 className="text-3xl font-semibold">{texthead}</h2>
-        <p className="text-gray-400 text-sm">{ty}</p>
-        <p className="text-gray-600 leading-relaxed  text-md mt-5">{des}</p>
-      </div>
-      {/* Image */}
-      <div className="relative w-full md:w-2/4 h-100 rounded-xl overflow-hidden">
-        <Image
-          src={scr}
-          alt={texthead}
-          fill
-          className="object-cover hover:scale-105 transition duration-500"
+        {/* Image */}
+        <div className="relative w-full md:w-2/4 h-72 md:h-80 rounded-xl overflow-hidden">
+          <Image
+            src={scr}
+            alt={texthead}
+            fill
+            className="object-cover hover:scale-105 transition duration-500"
           />
+        </div>
       </div>
-
     </div>
-    </div>
-   
   );
 };

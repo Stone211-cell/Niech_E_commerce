@@ -14,14 +14,20 @@ export async function uploadFile(image: File) {
 
   const { data } = await supabase.storage
     .from(bucket)
-    .upload(newName, image,{
-      cacheControl:'3600'
+    .upload(newName, image, {
+      cacheControl: '3600'
     });
 
   if (!data) throw new Error("Image upload failed!!!");
-//   const { data } = supabase.storage.from('bucket').getPublicUrl('filePath.jpg')
-// console.log(data.publicUrl)
+  //   const { data } = supabase.storage.from('bucket').getPublicUrl('filePath.jpg')
+  // console.log(data.publicUrl)
   return supabase.storage
-  .from(bucket)
-  .getPublicUrl(newName).data.publicUrl
+    .from(bucket)
+    .getPublicUrl(newName).data.publicUrl
+}
+
+// Upload multiple files
+export async function uploadFiles(images: File[]): Promise<string[]> {
+  const uploadPromises = images.map((image) => uploadFile(image));
+  return Promise.all(uploadPromises);
 }

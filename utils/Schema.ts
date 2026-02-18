@@ -23,6 +23,10 @@ export const imageSchema = z.object({
   image: validateImage(),
 });
 
+export const multiImageSchema = z.object({
+  images: z.array(validateImage()).min(1, "ต้องมีอย่างน้อย 1 รูป").max(5, "สูงสุด 5 รูป"),
+});
+
 export const productSchema = z.object({
   title: z
     .string()

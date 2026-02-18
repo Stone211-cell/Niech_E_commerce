@@ -6,6 +6,9 @@ import "./globals.css";
 import Headbar from "@/components/NavBarComponents/Headbar";
 import Footter from "@/components/NavBarComponents/Footter";
 import { ClerkProvider } from "@clerk/nextjs";
+import LoadingScreen from "@/components/Animation/LoadingScreen";
+import SmoothScroll from "@/components/Animation/SmoothScroll";
+import FloatingCartWrapper from "@/components/NavBarComponents/FloatingCartWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,9 +35,12 @@ export default function RootLayout({
   return (
     <ClerkProvider publishableKey={publishableKey}>
       <html lang="en">
-        <body className="font-sans">
+        <body className="font-sans bg-black text-white ml-0 mr-0 p-0 min-h-screen">
+          <LoadingScreen />
+          <SmoothScroll />
           <Headbar />
           {children}
+          <FloatingCartWrapper />
           <Footter />
           <Toaster />
         </body>

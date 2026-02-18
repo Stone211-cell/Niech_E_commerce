@@ -4,21 +4,17 @@ const nextConfig = {
 
   experimental: {
     serverActions: {
-      bodySizeLimit: '5mb',
+      bodySizeLimit: "5mb",
     },
   },
 
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'zpdrpttwsgamubhemwnn.supabase.co',
+        protocol: "https",
+        hostname: "zpdrpttwsgamubhemwnn.supabase.co",
       },
     ],
-  },
-  
-  eslint: {
-    ignoreDuringBuilds: true, // ป้องกัน lint error ทำให้ build fail
   },
 };
 
