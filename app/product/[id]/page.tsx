@@ -8,6 +8,7 @@ import FavoriteToggleButton from "@/components/Card/FavoriteToggleButton";
 import { ParamsPromise } from "@/utils/types";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import AuthLink from "@/components/Auth/AuthLink";
 
 const ProductDetail = async ({ params }: ParamsPromise) => {
   const { id } = await params;
@@ -81,12 +82,12 @@ const ProductDetail = async ({ params }: ParamsPromise) => {
             {/* Action Buttons */}
             <div className="flex flex-col gap-3 mt-2">
               <AddToCartButton productId={id} productType={productType} />
-              <Link
+              <AuthLink
                 href="/cart"
                 className="flex items-center justify-center gap-2 w-full py-4 rounded-full font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-500 hover:to-pink-500 transition-all shadow-lg shadow-purple-500/25"
               >
                 💳 ชำระเงินเลย
-              </Link>
+              </AuthLink>
             </div>
 
             {/* Trust badges */}

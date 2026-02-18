@@ -4,6 +4,18 @@ import ParallaxSection from "@/components/Animation/ParallaxSection";
 import ScrollGallery from "@/components/Animation/ScrollGallery";
 import Link from "next/link";
 
+
+
+// สำหรับประเทศไทย — ค่าธรรมเนียมมาตรฐานคือ 3.65% + ฿10 ต่อรายการ (รวม local + international cards) ตรวจสอบอัตราล่าสุดได้ที่ stripe.com/th/pricing
+
+// ตัวอย่าง
+// ถ้าลูกค้าจ่าย ฿1,000:
+// ค่าธรรมเนียม ≈ ฿1,000 × 3.65% + ฿10 = ฿46.50
+// คุณได้รับ ≈ ฿953.50
+
+//ค่าธรรมเนียม PromptPay ผ่าน Stripe ≈ 1.5% เทียบกับบัตร 3.65% + ฿10 — ประหยัดกว่า
+
+
 export default function Home() {
   return (
     <main className="relative min-h-screen">

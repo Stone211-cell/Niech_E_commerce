@@ -62,7 +62,7 @@ export const toggleFavoriteAction = async (prevState: {
   } catch (error) {
     console.error(error);
     return {
-      msg: "Something went wrong",
+      msg: error instanceof Error ? error.message : "Something went wrong",
     };
   }
 };

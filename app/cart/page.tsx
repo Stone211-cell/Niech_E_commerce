@@ -1,10 +1,28 @@
+import { ProductCardProps } from "@/utils/types"
 import { fetchCart } from "../action/favoriteproduct"
 import EmptyList from "@/components/Home/Emtpy"
 import Image from "next/image"
 import Link from "next/link"
+import { currentUser } from "@clerk/nextjs/server"
+import AuthGuardToast from "@/components/Auth/AuthGuardToast"
 
 const cartpage = async () => {
-  const favorites = await fetchCart()
+  const user = await currentUser();
+  if (!user) {
+    return (
+      <>
+        <EmptyList heading="กรุณาเข้าสู่ระบบ" />
+        <AuthGuardToast message="กรุณาเข้าสู่ระบบก่อนใช้งานตะกร้า" />
+      </>
+    );
+  }
+
+  let favorites: ProductCardProps[] = []
+  try {
+    favorites = await fetchCart()
+  } catch (error) {
+    // favorites empty if error
+  }
 
   if (favorites.length === 0) {
     return <EmptyList heading="ไม่มีสินค้าในตะกร้า" />

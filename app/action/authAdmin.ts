@@ -6,7 +6,7 @@ import { currentUser } from "@clerk/nextjs/server";
 export const getAuthUserAdmin = async () => {
   const user = await currentUser();
   if (!user) {
-    throw new Error("You must logged!!");
+    throw new Error("กรุณาเข้าสู่ระบบก่อนทำรายการ");
   }
   if (!user.privateMetadata.IsAdmin) throw new Error("You must admin!!");
   return user

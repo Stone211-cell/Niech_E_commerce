@@ -3,6 +3,8 @@ import EmptyList from "@/components/Home/Emtpy"
 import Image from "next/image"
 import CheckoutButton from "@/components/Checkout/CheckoutButton"
 import Link from "next/link"
+import { currentUser } from "@clerk/nextjs/server"
+import AuthGuardToast from "@/components/Auth/AuthGuardToast"
 
 const CheckoutPage = async ({
     searchParams,
@@ -11,6 +13,16 @@ const CheckoutPage = async ({
 }) => {
     const params = await searchParams
     const status = params?.status
+
+    const user = await currentUser();
+    if (!user) {
+        return (
+            <>
+                <EmptyList heading="กรุณาเข้าสู่ระบบ" />
+                <AuthGuardToast message="กรุณาเข้าสู่ระบบก่อนชำระเงิน" />
+            </>
+        );
+    }
 
     // ถ้า payment สำเร็จ
     if (status === "success") {

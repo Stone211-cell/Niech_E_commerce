@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import { useTransition, useEffect, useState } from "react";
 import { toggleFavoriteAction, fetchFavoriteId } from "@/app/action/favoriteproduct";
 import { ShoppingCart, Check, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 interface AddToCartButtonProps {
     productId: string;
@@ -36,12 +37,16 @@ const AddToCartButton = ({ productId, productType }: AddToCartButtonProps) => {
                 pathname,
                 productType,
             });
-            if (result.msg.includes("Add")) {
+            if (result.msg === "Add Favorite Success") {
                 setAdded(true);
                 setFavoriteId("temp");
-            } else {
+                toast.success("เพิ่มลงตะกร้าเรียบร้อย");
+            } else if (result.msg === "Removed Favorite Success") {
                 setAdded(false);
                 setFavoriteId(null);
+                toast.success("นำออกจากตะกร้าเรียบร้อย");
+            } else {
+                toast.error(result.msg);
             }
         });
     };
@@ -51,8 +56,8 @@ const AddToCartButton = ({ productId, productType }: AddToCartButtonProps) => {
             onClick={handleClick}
             disabled={isPending}
             className={`flex items-center justify-center gap-2 w-full py-4 rounded-full font-bold text-lg transition-all disabled:opacity-50 ${added
-                    ? "bg-emerald-600 text-white hover:bg-emerald-700"
-                    : "bg-white text-black hover:bg-gray-200"
+                ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                : "bg-white text-black hover:bg-gray-200"
                 }`}
         >
             {isPending ? (

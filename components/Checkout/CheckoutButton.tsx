@@ -1,6 +1,8 @@
 "use client"
 import { useState } from "react"
 
+import { toast } from "sonner"
+
 // ปุ่มชำระเงิน — กดแล้ว redirect ไป Stripe
 export default function CheckoutButton() {
     const [loading, setLoading] = useState(false)
@@ -20,11 +22,11 @@ export default function CheckoutButton() {
                 // ไปหน้า Stripe
                 window.location.href = data.url
             } else {
-                alert(data.error || "เกิดข้อผิดพลาด")
+                toast.error(data.error || "เกิดข้อผิดพลาด")
                 setLoading(false)
             }
         } catch {
-            alert("เกิดข้อผิดพลาด กรุณาลองใหม่")
+            toast.error("เกิดข้อผิดพลาด กรุณาลองใหม่")
             setLoading(false)
         }
     }
